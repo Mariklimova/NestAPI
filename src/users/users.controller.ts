@@ -1,20 +1,20 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { AppService } from './app.service';
+import { UsersService } from './users.service';
 
 
 interface iUser {
-  name: string;
-  description: string;
+  username: string;
+  email: string;
+  password:string
 }
-
 interface iUserWithId extends iUser {
   id: number;
 }
 
 
-@Controller()
-export class AppController {
-  constructor(private readonly appService: AppService) { }
+@Controller('/users')
+export class UsersController {
+  constructor(private readonly appService: UsersService) { }
 
   @Get()
   getItem(): iUserWithId[] | string {
